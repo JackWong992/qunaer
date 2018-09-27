@@ -21,48 +21,15 @@
         <div class="area">
           <div class="title">热门城市</div>
           <div class="button-list">
-            <div class="button-wrapper">
-              <div class="button">北京</div>
-            </div>
-            <div class="button-wrapper">
-              <div class="button">北京</div>
-            </div>
-            <div class="button-wrapper">
-              <div class="button">北京</div>
-            </div>
-            <div class="button-wrapper">
-              <div class="button">北京</div>
+            <div class="button-wrapper" v-for="(item,index) of hot" :key="index">
+              <div class="button">{{item.name}}</div>
             </div>
           </div>
         </div>
-        <div class="area">
-          <div class="title">A</div>
-          <div class="item-list">
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-          </div>
-          <div class="title">A</div>
-          <div class="item-list">
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-          </div>
-          <div class="title">A</div>
-          <div class="item-list">
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-          </div>
-          <div class="title">A</div>
-          <div class="item-list">
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
-            <div class="item">阿拉尔</div>
+        <div class="area" v-for="(item,key) of cities" :key="key">
+          <div class="title">{{key}}</div>
+          <div class="item-list" v-for="innerItem in item" :key="innerItem.id">
+            <div class="item">{{innerItem.name}}</div>
           </div>
         </div>
       </div>
@@ -72,10 +39,19 @@
 <script>
     import BScroll from 'better-scroll'
     export default {
-        name: "List",
-     mounted(){
-      this.scroll = new BScroll(this.$refs.wrapper)
-     }
+      name: "List",
+      props: {
+        hot:{
+          type: Array
+        },
+        cities: {
+          type: Object
+        }
+      },
+      mounted(){
+        this.scroll = new BScroll(this.$refs.wrapper)
+        // console.log('--'+this.cities)
+      }
     }
 </script>
 
