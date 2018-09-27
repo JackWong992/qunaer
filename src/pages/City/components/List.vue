@@ -26,7 +26,7 @@
             </div>
           </div>
         </div>
-        <div class="area" v-for="(item,key) of cities" :key="key">
+        <div class="area" v-for="(item,key) of cities" :key="key" :ref="key">
           <div class="title">{{key}}</div>
           <div class="item-list" v-for="innerItem in item" :key="innerItem.id">
             <div class="item">{{innerItem.name}}</div>
@@ -46,11 +46,25 @@
         },
         cities: {
           type: Object
+        },
+        letter: {
+          type: String
         }
       },
       mounted(){
         this.scroll = new BScroll(this.$refs.wrapper)
         // console.log('--'+this.cities)
+      },
+      watch:{
+        letter(){
+          console.log('接收父亲传来的值：'+this.letter)
+          if(this.letter){
+            const element = this.$refs[this.letter][0]
+              //获取到列表元素的位置
+             this.scroll.scrollToElement(element)
+              //滚动到列表元素的位置
+          }
+        }
       }
     }
 </script>

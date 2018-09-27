@@ -2,8 +2,9 @@
     <div>
       <city-header></city-header>
       <city-search></city-search>
-      <city-list :hot="hotCities" :cities="cities"></city-list>
-      <city-alphabet :cities="cities"></city-alphabet>
+      <city-list :hot="hotCities" :cities="cities"
+                :letter="letter"></city-list>
+      <city-alphabet :cities="cities" @change="handleChangeLetter"></city-alphabet>
     </div>
 </template>
 
@@ -18,7 +19,8 @@
         data() {
           return {
             hotCities: [],
-            cities: {}
+            cities: {},
+            letter:''
           }
         },
         components: {
@@ -41,6 +43,10 @@
                   this.hotCities = data.hotCities
                   this.cities = data.cities
               }
+            },
+            handleChangeLetter(letter){
+              this.letter = letter
+              console.log('父亲接收的值：'+letter)
             }
         },
         mounted(){

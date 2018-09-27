@@ -1,6 +1,8 @@
 <template>
   <ul class="list">
-    <li class="item" v-for="(item,key) in cities" :key="key">{{key}}</li>
+    <li class="item"
+        v-for="(item,key) in cities" :key="key"
+      @click="handleClickLetter">{{key}}</li>
   </ul>
 </template>
 
@@ -11,7 +13,13 @@
           cities: {
             type: Object
           }
-        }
+        },
+      methods: {
+          handleClickLetter(e){
+            console.log('弟弟传来的值：'+ e.target.innerText )
+            this.$emit( 'change', e.target.innerText )
+          }
+      }
     }
 </script>
 
