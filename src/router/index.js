@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import Home from '@/pages/home/Home'
+import City from '@/pages/city/City'
 import 'swiper/dist/css/swiper.css'
 import '@/assets/styles/reset.css'
 import '@/assets/styles/border.css'
@@ -18,6 +19,10 @@ export default new Router({
      path: '/',
      name: 'Home',
      component: Home
-    }
+    },{
+      path: '/city',
+      name: 'City',
+      component: City
+     }
   ]
 })

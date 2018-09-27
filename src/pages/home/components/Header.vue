@@ -6,15 +6,23 @@
      <div class="header-input">
        <div class="iconfont search-icon">&#xe632;</div>
        输入城市/景点/游玩主题</div>
-     <div class="header-right">城市
-      <div class="iconfont city-icon">&#xe807;</div>
-     </div>
+      <router-link to="/city">
+        <div class="header-right">{{this.city}}
+          <div class="iconfont city-icon">&#xe807;</div>
+        </div>
+      </router-link>
+
    </div>
 </template>
 
 <script>
     export default {
-        name: "HomeHeader"
+        name: "HomeHeader",
+        props: {
+          city: {
+            type: String
+          }
+        }
     }
 </script>
 
