@@ -3,9 +3,18 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+let defaultCity = '北京'
+try{
+  if(localStorage.city){
+    defaultCity=localStorage.city
+  }
+}catch(e){
+
+}
+
 export default new Vuex.Store({
   state: {
-    city: '北京'
+    city: defaultCity
   },
   actions: {
    changeCity(ctx,city){
@@ -17,6 +26,9 @@ export default new Vuex.Store({
     changeCitys(state, city){
      //第一个值为state的值，第二个值为上面action外部传过来的值
      state.city = city
+     try{
+       localStorage.city = city
+     }catch(e){}
     }
   }
 })
