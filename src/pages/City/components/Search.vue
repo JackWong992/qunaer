@@ -5,7 +5,7 @@
       </div>
       <div class="search-content" ref="search" v-show="keyword">
         <ul>
-          <li v-for="(item,index) of list" :key="index" class="search-item"
+          <li v-for="(item,index) of list" :key="index" class="search-item" @click="handleCityClick(item.name)"
             >{{item.name}}</li>
           <li  class="search-item" v-show="!this.list.length">没有找到匹配数据</li>
         </ul>
@@ -27,6 +27,11 @@
             keyword: '',
             list: [],
             timer: null
+          }
+        },
+        methods: {
+          handleCityClick(city){
+            this.$store.dispatch('changeCity', city  )
           }
         },
       watch:{

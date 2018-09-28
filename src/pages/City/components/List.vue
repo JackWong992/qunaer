@@ -4,24 +4,16 @@
         <div class="area">
           <div class="title">当前城市</div>
           <div class="button-list">
+
             <div class="button-wrapper">
-              <div class="button">北京</div>
-            </div>
-            <div class="button-wrapper">
-              <div class="button">北京</div>
-            </div>
-            <div class="button-wrapper">
-              <div class="button">北京</div>
-            </div>
-            <div class="button-wrapper">
-              <div class="button">北京</div>
+              <div class="button">{{this.$store.state.city}}</div>
             </div>
           </div>
         </div>
         <div class="area">
           <div class="title">热门城市</div>
           <div class="button-list">
-            <div class="button-wrapper" v-for="(item,index) of hot" :key="index">
+            <div class="button-wrapper" v-for="(item,index) of hot" :key="index" @click="handleCityClick(item.name)">
               <div class="button">{{item.name}}</div>
             </div>
           </div>
@@ -29,7 +21,7 @@
         <div class="area" v-for="(item,key) of cities" :key="key" :ref="key">
           <div class="title">{{key}}</div>
           <div class="item-list" v-for="innerItem in item" :key="innerItem.id">
-            <div class="item">{{innerItem.name}}</div>
+            <div class="item" @click="handleCityClick(innerItem.name)">{{innerItem.name}}</div>
           </div>
         </div>
       </div>
@@ -49,6 +41,12 @@
         },
         letter: {
           type: String
+        }
+      },
+      methods: {
+        handleCityClick(city){
+         // alert(city) 传进去的参数显示出来
+         this.$store.dispatch('changeCity', city)
         }
       },
       mounted(){

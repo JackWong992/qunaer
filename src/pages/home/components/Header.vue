@@ -1,14 +1,14 @@
 <template>
    <div class="header">
      <div class="header-left">
-
        <div class="iconfont back-icon">&#xe624;</div>
      </div>
      <div class="header-input">
        <div class="iconfont search-icon">&#xe632;</div>
        输入城市/景点/游玩主题</div>
       <router-link to="/city">
-        <div class="header-right">{{this.city}}
+        <div class="header-right">{{this.$store.state.city}}
+          <!-- state里面的值直接通过$store.state.xxx直接取 -->
           <div class="iconfont city-icon">&#xe807;</div>
         </div>
       </router-link>
@@ -19,11 +19,6 @@
 <script>
     export default {
         name: "HomeHeader",
-        props: {
-          city: {
-            type: String
-          }
-        }
     }
 </script>
 
@@ -53,9 +48,11 @@
         font-size: .4rem
     .header-right
       float: right
-      width: 1.28rem
+      width: 1.48rem
       text-align: center
       color: #fff
+      padding: 0 -.1rem
+      // border: 1px solid red
       .city-icon
         display: inline-block
         font-size: .24rem
