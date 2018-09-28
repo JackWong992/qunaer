@@ -47,6 +47,7 @@
         handleCityClick(city){
          // alert(city) 传进去的参数显示出来
          this.$store.dispatch('changeCity', city)
+         this.$router.push('/')
         }
       },
       mounted(){
