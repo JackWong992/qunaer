@@ -7,7 +7,7 @@
        <div class="iconfont search-icon">&#xe632;</div>
        输入城市/景点/游玩主题</div>
       <router-link to="/city">
-        <div class="header-right">{{this.$store.state.city}}
+        <div class="header-right">{{this.currentCity}}
           <!-- state里面的值直接通过$store.state.xxx直接取 -->
           <div class="iconfont city-icon">&#xe807;</div>
         </div>
@@ -17,8 +17,14 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex'
     export default {
         name: "HomeHeader",
+        computed: {
+          ...mapState({
+            currentCity: 'city'
+          })
+        }
     }
 </script>
 
